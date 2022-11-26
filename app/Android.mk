@@ -8,6 +8,7 @@ LOCAL_SRC_FILES += \ $(call all-Iaidl-files-under, common/src)
 LOCAL_AIDL_INCLUDES := $(LOCAL_PATH)/common/src/
 
 LOCAL_PACKAGE_NAME := SmartcardService
+LOCAL_SDK_VERSION := current
 LOCAL_CERTIFICATE := platform
 
 LOCAL_PROGUARD_ENABLED := disabled
