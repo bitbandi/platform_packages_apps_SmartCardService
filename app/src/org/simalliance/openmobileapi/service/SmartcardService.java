@@ -81,11 +81,6 @@ public final class SmartcardService extends Service {
 
         String prefix = "  ";
 
-        if (!Build.IS_DEBUGGABLE) {
-            writer.println(prefix + "Your build is not debuggable!");
-            writer.println(prefix + "Smartcard service dump is only available"
-                    + "for userdebug and eng build");
-        } else {
             writer.println(prefix + "List of terminals:");
             for (Terminal terminal : mTerminals.values()) {
                 writer.println(prefix + "  " + terminal.getName());
@@ -95,7 +90,6 @@ public final class SmartcardService extends Service {
             for (Terminal terminal : mTerminals.values()) {
                 terminal.dump(writer, prefix);
             }
-        }
     }
 
     public void onDestroy() {

@@ -21,7 +21,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.os.Build;
-import android.os.SystemProperties;
 import android.util.Log;
 
 import java.io.ByteArrayInputStream;
@@ -465,18 +464,9 @@ public class AccessControlEnforcer {
     }
 
     private void readSecurityProfile() {
-        if(!Build.IS_DEBUGGABLE) {
             mUseArf = true;
             mUseAra = true;
             mFullAccess = false; // Per default we don't grant full access.
-        } else {
-            String level = SystemProperties.get("service.seek", "useara usearf");
-            level = SystemProperties.get("persist.service.seek", level);
-
-            mUseArf = level.contains("usearf");
-            mUseAra = level.contains("useara");
-            mFullAccess = level.contains("fullaccess");
-        }
         Log.i(SmartcardService.LOG_TAG, "Allowed ACE mode: ara=" + mUseAra + " arf=" + mUseArf + " fullaccess=" + mFullAccess );
     }
 

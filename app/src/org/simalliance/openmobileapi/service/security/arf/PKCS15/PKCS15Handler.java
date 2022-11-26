@@ -28,7 +28,6 @@ import org.simalliance.openmobileapi.service.security.arf.SecureElement;
 import org.simalliance.openmobileapi.service.security.arf.SecureElementException;
 
 import android.os.Build;
-import android.os.SystemProperties;
 import android.util.Log;
 
 /**
@@ -248,16 +247,8 @@ public class PKCS15Handler {
      * Read security allowed sim mode
      */
     private void readAllowedSimMode() {
-        if(!Build.IS_DEBUGGABLE) {
             mSimIoAllowed = true;
             mSimAllianceAllowed = true;
-        } else {
-            String level = SystemProperties.get("service.seek.arf", "simio simalliance");
-            level = SystemProperties.get("persist.service.seek.arf", level);
-
-            if(level.contains("simio")) mSimIoAllowed = true; else mSimIoAllowed = false;
-            if(level.contains("simalliance")) mSimAllianceAllowed = true; else mSimAllianceAllowed = false;
-        }
 
         Log.i(TAG, "Allowed SIM mode: SimIo=" + mSimIoAllowed + " SimAlliance=" + mSimAllianceAllowed );
     }    
