@@ -95,11 +95,11 @@ public final class UiccTerminal extends Service {
         Log.d(TAG, "iccOpenLogicalChannel > " + aid);
         // Remove any previously stored selection response
         IccOpenLogicalChannelResponse response;
-        if (p2 == 0) {
+//        if (p2 == 0) {
             response = mTelephonyManager.iccOpenLogicalChannel(aid);
-        } else {
-            response = mTelephonyManager.iccOpenLogicalChannel(aid, p2);
-        }
+//        } else {
+//            response = mTelephonyManager.iccOpenLogicalChannel(aid, p2);
+//        }
         int status = response.getStatus();
         if (status != IccOpenLogicalChannelResponse.STATUS_NO_ERROR) {
             Log.d(TAG, "iccOpenLogicalChannel failed.");
@@ -242,6 +242,7 @@ public final class UiccTerminal extends Service {
 
         @Override
         public byte[] getAtr() {
+/*
             if (mAtr == null) {
                 String atr = mTelephonyManager.iccGetAtr();
                 Log.d(TAG, "atr = " + (atr == null ? "" : atr));
@@ -249,6 +250,8 @@ public final class UiccTerminal extends Service {
                     mAtr = ByteArrayConverter.hexStringToByteArray(atr);
                 }
             }
+*/
+            Log.d(TAG, "getAtr NOTE: getAtr() is not supported on unmodified Android platforms. Will simply return 'null'.");
             return mAtr;
         }
 
