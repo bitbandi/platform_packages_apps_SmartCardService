@@ -10,7 +10,10 @@
     </permission>
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
     <uses-permission android:name="org.simalliance.openmobileapi.BIND_TERMINAL"/>
+    <uses-permission android:name="org.simalliance.openmobileapi.SYSTEM_TERMINAL"/>
 
     <application android:label="SmartcardService">
         <service android:enabled="true"
@@ -26,5 +29,15 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
+        <service android:name="org.simalliance.openmobileapi.uiccterminal.UiccTerminal"
+            android:enabled="true"
+            android:exported="true"
+            android:label="SIM"
+            android:process=":remote"
+            android:permission="org.simalliance.openmobileapi.BIND_TERMINAL">
+            <intent-filter>
+                <action android:name="org.simalliance.openmobileapi.TERMINAL_DISCOVERY" />
+            </intent-filter>
+        </service>
     </application>
 </manifest> 
