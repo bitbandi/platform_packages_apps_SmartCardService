@@ -464,9 +464,9 @@ public class AccessControlEnforcer {
     }
 
     private void readSecurityProfile() {
-            mUseArf = true;
-            mUseAra = true;
-            mFullAccess = false; // Per default we don't grant full access.
+            mUseArf = false;
+            mUseAra = false;
+            mFullAccess = true; // Per default we don't grant full access.
         Log.i(SmartcardService.LOG_TAG, "Allowed ACE mode: ara=" + mUseAra + " arf=" + mUseArf + " fullaccess=" + mFullAccess );
     }
 
