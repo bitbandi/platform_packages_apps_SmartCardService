@@ -17,6 +17,7 @@
 
     <application android:label="SmartcardService">
         <service android:enabled="true"
+                android:exported="true"
                 android:name="org.simalliance.openmobileapi.service.SmartcardService"
                 android:process=":remote"
                 android:permission="org.simalliance.openmobileapi.SMARTCARD">
@@ -24,7 +25,8 @@
                 <action android:name="org.simalliance.openmobileapi.BIND_SERVICE" />
             </intent-filter>
         </service>
-        <receiver android:name="org.simalliance.openmobileapi.service.SmartcardServiceBootCompletedBroadcastReceiver">
+        <receiver android:name="org.simalliance.openmobileapi.service.SmartcardServiceBootCompletedBroadcastReceiver"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
